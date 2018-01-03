@@ -1,39 +1,27 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'my-app',
   template: `
   <h1>{{name}}</h1>
-  <p> {{name}} is in the {{region}} region.</p>
+  <p> {{name}} is at {{street}} in {{city}} in the {{region}} region.</p>
+  <br /> 
   <fieldset>
-    <img src={{image}}/>
-    <img [src]="image"/>
+    <label> Name:  <input [(ngModel)]="name"> </label>
   </fieldset>
-  <label [style.color]="color"> 
-    Favorite Color: {{color}}
-  </label>
-  <button (click)="colorChange()">Toggle Color </button>
-  <!--1 way to do it -->
-  <!-- select #selector (change)="colorChange(selector.value)"> 
-  <option>red</option>
-  <option>blue</option>
-  <option>green</option>
-</select -->
-  <!-- 2nd way to do it -- stick with this?-->
-  <select (change)="colorChange($event.target.value)"> 
-    <option>red</option>
-    <option>blue</option>
-    <option>green</option>
-  </select>
-  <br />
-  <hr>
-  <button (click)="addressClick()"> Show/Hide Address Details </button>
+  
+  <label> <input type="checkbox" [(ngModel)]="hideAddress"> Hide Address </label>
   <div [hidden]="hideAddress">
     <h2> User Properties </h2>
-    <p> Street: {{street}} </p>
-    <p> City: {{city}} </p>
+    <fieldset>
+      <label> Street: <input [(ngModel)]="street">  </label>
+    </fieldset>
+    <fieldset>
+      <label> City:  <input [(ngModel)]="city">  </label>
+    </fieldset>
     <p> Region: 
-      <select (change)="regionChange($event.target.value)">
+      <select [(ngModel)]="region">
         <option>East</option>
         <option>North</option>
         <option>South</option>
@@ -41,31 +29,15 @@ import { Component } from '@angular/core';
       </select>
     </p>
   </div>
+
+  
   `,
 })
 export class AppComponent  { 
   name = 'Alex Smith'; 
-  image = "favicon.ico"; // 2 ways to interpolate
-  color = "red";
   street= "123 Main Street";
   city = "Texas";
   region= "North";
   hideAddress = false;
 
-  
-  // event binding
-  clicked() {
-    this.color = this.color == 'red'? 'blue': 'red'
-  }
-  colorChange(color: string) {
-    this.color = color;
-  }
-
-  addressClick(){
-    this.hideAddress = !this.hideAddress;
-  }
-
-  regionChange(region: string) {
-    this.region = region;
-  }
 }
