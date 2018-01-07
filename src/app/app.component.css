@@ -2,3 +2,8 @@ h1{
     color: navy;
     font-size: 150%;
 }
+
+.selected {
+    color: navy;
+    font-weight: bold;
+}
