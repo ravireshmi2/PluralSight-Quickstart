@@ -1,0 +1,21 @@
+<h2> User Properties </h2>
+<fieldset>
+    <label> Street: <input [(ngModel)]="address.street">  </label>
+</fieldset>
+<fieldset>
+    <label> City:  <input [(ngModel)]="address.city">  </label>
+</fieldset>
+<fieldset>
+    <p> State: 
+        <select [(ngModel)]="address.state">
+            <option *ngFor="let state of states">{{state}}</option>
+        </select>
+    </p>
+</fieldset>
+<fieldset>
+    <p> Region: 
+        <select [(ngModel)]="address.region">
+            <option *ngFor="let region of regions">{{region}}</option>
+        </select>
+    </p>
+</fieldset>
